@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biomechanical Analysis for Performance Enhancement</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --text-light: #7f8c8d;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #f9f9f9;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav a {
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: var(--secondary-color);
+      background-color: var(--light-color);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--light-color);
+      font-size: 1.8rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .member {
+      padding: 1.5rem;
+      background-color: var(--light-color);
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+    
+    .member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .member strong {
+      display: block;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .member em {
+      color: var(--secondary-color);
+      font-style: normal;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    
+    ul {
+      list-style-position: inside;
+      margin-left: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--dark-color);
+      color: white;
+      margin-top: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav a {
+        padding: 0.8rem 1rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Biomechanical Analysis for Performance Enhancement</h1>
+    <p>Optimizing Athletic Performance Through Advanced Motion Science</p>
+  </header>
+
+  <nav>
+    <a href="#project">Project</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#downloads">Resources</a>
+    <a href="#about">Team</a>
+  </nav>
+
+  <main>
+    <section id="project">
+      <h2>Project Overview</h2>
+      <p>Our innovative system revolutionizes athletic training by integrating cutting-edge technologies to provide comprehensive performance analysis and enhancement tools for weightlifting athletes.</p>
+      
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>AI-Powered Biomechanical Feedback:</strong> Real-time analysis of lifting form and technique</li>
+        <li><strong>3D Posture Correction:</strong> Visual feedback for optimal body positioning</li>
+        <li><strong>Fatigue Detection:</strong> Intelligent monitoring of athlete fatigue levels</li>
+        <li><strong>Injury Prediction:</strong> Advanced algorithms to identify potential injury risks</li>
+        <li><strong>Personalized Meal Planning:</strong> Nutrition optimization based on training load</li>
+        <li><strong>Rehabilitation Tracking:</strong> Progress monitoring for injury recovery</li>
+      </ul>
+      
+      <p>All these features are seamlessly integrated into a mobile-friendly platform, allowing athletes and coaches to access critical performance data anytime, anywhere.</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <img src="assets/sprint-athlete.jpg" alt="Athlete sprinting" style="width: 100%; max-width: 500px;"/>
+        <img src="assets/weightlifting.jpg" alt="Weightlifting analysis" style="width: 100%; max-width: 500px;"/>
+      </div>
+      <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">Biomechanical motion capture and analysis outputs</p>
+    </section>
+
+    <section id="downloads">
+      <h2>Resources & Downloads</h2>
+      <p>Access our research materials and project documentation:</p>
+      <ul>
+        <li><a href="downloads/Biomechanical_Analysis_For_Weightlifting_Performance_Enhancement.pdf" download>Research Paper</a> - Comprehensive academic paper detailing our methodology and findings</li>
+        <li><a href="downloads/Final_Report_24-25J-275.pdf" download>Final Report</a> - Complete project documentation</li>
+        <li><a href="downloads/Project_Proposal_Presentation.pptx" download>Project Proposal Presentation</a> - Initial project pitch and scope</li>
+        <li><a href="downloads/TAF_24-25J-275.pdf" download>TAF Document</a> - Technical Approval Form</li>
+        <li><a href="downloads/RETAF_24-25J-275.pdf" download>RETAF Document</a> - Revised Technical Approval Form</li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>Research Team</h2>
+      <p>We are a dedicated group of final-year undergraduates from the Sri Lanka Institute of Information Technology (SLIIT), conducting groundbreaking research in biomechanical analysis for athletic performance enhancement.</p>
+      
+      <h3 style="margin-top: 2rem; color: var(--primary-color);">Project Members</h3>
+      <div class="team-grid">
+        <div class="member">
+          <strong>K.S.S Gunawardena</strong>
+          <span>Faculty of Computing, IT Department</span>
+          <em>it21250088@my.sliit.lk</em>
+        </div>
+        <div class="member">
+          <strong>I.U Ranaweera</strong>
+          <span>Faculty of Computing, IT Department</span>
+          <em>it21313134@my.sliit.lk</em>
+        </div>
+        <div class="member">
+          <strong>S.D.A.N Wimalarathna</strong>
+          <span>Faculty of Computing, IT Department</span>
+          <em>it21312212@my.sliit.lk</em>
+        </div>
+        <div class="member">
+          <strong>B.M Ranatunga</strong>
+          <span>Faculty of Computing, IT Department</span>
+          <em>it21313134@my.sliit.lk</em>
+        </div>
+      </div>
+      
+      <h3 style="margin-top: 2rem; color: var(--primary-color);">Supervisors</h3>
+      <div class="team-grid">
+        <div class="member">
+          <strong>G.T Dassanayake</strong>
+          <span>Faculty of Computing, IT Department</span>
+          <em>thamali.d@sliit.lk</em>
+        </div>
+        <div class="member">
+          <strong>P. Gunathilake</strong>
+          <span>Faculty of Computing, Software Engineering Department</span>
+          <em>poojani.g@sliit.lk</em>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Biomechanical Analysis Research Team | Sri Lanka Institute of Information Technology</p>
+    <p style="margin-top: 0.5rem;">Contact: <a href="mailto:info@biomech-analysis.com" style="color: white;">info@biomech-analysis.com</a></p>
+  </footer>
+</body>
+</html>
