@@ -281,52 +281,121 @@
       word-break: break-all;
     }
     
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    /* New Gallery Styles */
+    .gallery-container {
+      position: relative;
+      margin: 2rem auto;
+      max-width: 1000px;
     }
     
-    .gallery-item {
-      border-radius: var(--border-radius);
+    .gallery-slider {
+      position: relative;
       overflow: hidden;
+      border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
-      transition: var(--transition);
+    }
+    
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 500px;
+    }
+    
+    .slide {
+      min-width: 100%;
       position: relative;
     }
     
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    .gallery-item img {
+    .slide img {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      transition: var(--transition);
+      height: 100%;
+      object-fit: contain;
+      background-color: #f1f1f1;
     }
     
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-    
-    .gallery-caption {
+    .slide-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      background: rgba(0, 0, 0, 0.7);
       color: white;
       padding: 1rem;
-      opacity: 0;
-      transition: var(--transition);
+      text-align: center;
     }
     
-    .gallery-item:hover .gallery-caption {
-      opacity: 1;
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text-light);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .slider-dot.active {
+      background: var(--secondary-color);
+    }
+    
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--dark-color);
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .slider-btn:hover {
+      background: white;
+    }
+    
+    .prev {
+      left: 20px;
+    }
+    
+    .next {
+      right: 20px;
+    }
+    
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    
+    .thumbnail {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .thumbnail:hover, .thumbnail.active {
+      border-color: var(--secondary-color);
     }
     
     .resource-list {
@@ -441,8 +510,19 @@
         padding: 1.5rem;
       }
       
-      .features-grid, .team-grid, .gallery {
+      .features-grid, .team-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .slider {
+        height: 300px;
+      }
+      
+      .slider-btn {
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -525,35 +605,56 @@
       <h2>System Gallery</h2>
       <p>Visual documentation of our platform interface and analysis outputs:</p>
       
-      <div class="gallery">
-        <div class="gallery-item">
-          <img src="assets/39bbb8fb-6c0d-4828-a55c-402d32cd35d1.png" alt="Olympic Snatch Tutorial Screen">
-          <div class="gallery-caption">Technique Tutorial Interface</div>
+      <div class="gallery-container">
+        <div class="gallery-slider">
+          <button class="slider-btn prev">&lt;</button>
+          <div class="slider">
+             <div class="slide">
+              <img src="assets/3a98e042-3b09-435c-a1a4-ca8956b24707.png" alt="System Architecture Diagram">
+              <div class="slide-caption">Technical Architecture</div>
+            </div>
+            <div class="slide">
+              <img src="assets/39bbb8fb-6c0d-4828-a55c-402d32cd35d1.png" alt="Olympic Snatch Tutorial Screen">
+              <div class="slide-caption">Technique Tutorial Interface</div>
+            </div>
+            <div class="slide">
+              <img src="assets/a2dcdb53-38fa-4915-8e4e-ff7717bdb4b3.png" alt="Weightlifting Techniques Menu">
+              <div class="slide-caption">Exercise Library</div>
+            </div>
+            <div class="slide">
+              <img src="assets/2f634f96-ef04-4b44-b5cd-b7541c4f0635.jpg" alt="Personalized Meal Plan">
+              <div class="slide-caption">Nutrition Planning Module</div>
+            </div>
+            <div class="slide">
+              <img src="assets/WhatsApp Image 2025-05-25 at 10.08.17 PM.jpeg" alt="Power App Home">
+              <div class="slide-caption">Dashboard Overview</div>
+            </div>
+            <div class="slide">
+              <img src="assets/WhatsApp Image 2025-05-25 at 10.08.32 PM.jpeg" alt="Fitness Planner Screen">
+              <div class="slide-caption">Training Planner</div>
+            </div>
+           
+          </div>
+          <button class="slider-btn next">&gt;</button>
         </div>
         
-        <div class="gallery-item">
-          <img src="assets/a2dcdb53-38fa-4915-8e4e-ff7717bdb4b3.png" alt="Weightlifting Techniques Menu">
-          <div class="gallery-caption">Exercise Library</div>
+        <div class="slider-nav">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
         </div>
         
-        <div class="gallery-item">
-          <img src="assets/2f634f96-ef04-4b44-b5cd-b7541c4f0635.jpg" alt="Personalized Meal Plan">
-          <div class="gallery-caption">Nutrition Planning Module</div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.17 PM.jpeg" alt="Power App Home">
-          <div class="gallery-caption">Dashboard Overview</div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.32 PM.jpeg" alt="Fitness Planner Screen">
-          <div class="gallery-caption">Training Planner</div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="assets/3a98e042-3b09-435c-a1a4-ca8956b24707.png" alt="System Architecture Diagram">
-          <div class="gallery-caption">Technical Architecture</div>
+        <div class="thumbnail-container">
+          <img src="assets/3a98e042-3b09-435c-a1a4-ca8956b24707.png" alt="Thumbnail 1" class="thumbnail active">
+          <img src="assets/39bbb8fb-6c0d-4828-a55c-402d32cd35d1.png" alt="Thumbnail 2" class="thumbnail ">
+          <img src="assets/a2dcdb53-38fa-4915-8e4e-ff7717bdb4b3.png" alt="Thumbnail 3" class="thumbnail">
+          <img src="assets/2f634f96-ef04-4b44-b5cd-b7541c4f0635.jpg" alt="Thumbnail 4" class="thumbnail">
+          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.17 PM.jpeg" alt="Thumbnail 5" class="thumbnail">
+          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.32 PM.jpeg" alt="Thumbnail 6" class="thumbnail">
+          
         </div>
       </div>
     </section>
@@ -575,19 +676,19 @@
         </li>
         <li>
           <a href="downloads/Progress Presentation 1.pptx" download>
-            Proposal Presentation Deck 
+            Proposal Presentation 1
           </a>
         </li>
+        <li>
+          <a href="downloads/Progress_Presentation_PP2.pptx" download>
+            Progress Presentation 2
+          </a>
         <li>
           <a href="downloads/TAF_24-25J-275.pdf" download>
             Technical Approval Documentation 
           </a>
         </li>
-        <li>
-          <a href="downloads/System_Architecture_Specifications.pdf" download>
-            Technical Specifications
-          </a>
-        </li>
+        
       </ul>
     </section>
 
@@ -605,21 +706,21 @@
         </div>
         
         <div class="member">
-          <img src="assets/team-member2.jpg" alt="I.U Ranaweera">
+          <img src="assets/team-member2.jpeg" alt="I.U Ranaweera">
           <strong>I.U Ranaweera</strong>
           <span>BSc (Hons) in Information Technology</span>
           <em>it21313134@my.sliit.lk</em>
         </div>
         
         <div class="member">
-          <img src="assets/team-member3.jpg" alt="S.D.A.N Wimalarathna">
+          <img src="assets/team-member3.jpeg" alt="S.D.A.N Wimalarathna">
           <strong>S.D.A.N Wimalarathna</strong>
           <span>BSc (Hons) in Information Technology</span>
           <em>it21312212@my.sliit.lk</em>
         </div>
         
         <div class="member">
-          <img src="assets/team-member4.jpg" alt="B.M Ranatunga">
+          <img src="assets/team-member4.jpeg" alt="B.M Ranatunga">
           <strong>B.M Ranatunga</strong>
           <span>BSc (Hons) in Information Technology</span>
           <em>it21313134@my.sliit.lk</em>
@@ -663,8 +764,7 @@
         
         <div class="footer-column">
           <h3>Contact</h3>
-          <a href="mailto:research@biotrack.sliit.lk">research@biotrack.sliit.lk</a>
-          <a href="tel:+94112345678">+94 112 345 678</a>
+          <a href="mailto:researchpowerapp@gmail.com">researchpowerapp@gmail.com</a>
           <p>Sri Lanka Institute of Information Technology</p>
           <p>New Kandy Road, Malabe 10115</p>
         </div>
@@ -675,5 +775,73 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Gallery Slider Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.querySelector('.slider');
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slider-dot');
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Update thumbnails
+        thumbnails.forEach((thumb, index) => {
+          thumb.classList.toggle('active', index === currentIndex);
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+      }
+      
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+      }
+      
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      }
+      
+      // Event listeners
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+      
+      thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => goToSlide(index));
+      });
+      
+      // Auto-slide (optional)
+      let slideInterval = setInterval(nextSlide, 5000);
+      
+      // Pause on hover
+      const sliderContainer = document.querySelector('.gallery-slider');
+      sliderContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      sliderContainer.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 5000);
+      });
+    });
+  </script>
 </body>
 </html>
