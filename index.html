@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Biomechanical Analysis for Performance Enhancement</title>
+  <meta name="description" content="Advanced biomechanical analysis system for athletic performance enhancement">
+  <title>BiomeTrack | Biomechanical Analysis for Performance Enhancement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #3498db;
-      --accent-color: #e74c3c;
-      --light-color: #ecf0f1;
-      --dark-color: #2c3e50;
-      --text-color: #333;
-      --text-light: #7f8c8d;
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #e53e3e;
+      --light-color: #f7fafc;
+      --dark-color: #1a202c;
+      --text-color: #2d3748;
+      --text-light: #718096;
+      --border-radius: 0.375rem;
+      --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     * {
@@ -22,158 +29,419 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       line-height: 1.6;
       color: var(--text-color);
-      background-color: #f9f9f9;
+      background-color: #f8f9fa;
+      -webkit-font-smoothing: antialiased;
     }
     
     header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 4rem 1rem;
       margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      z-index: 0;
+    }
+    
+    header .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
       font-weight: 700;
+      line-height: 1.2;
     }
     
     header p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background-color: #c53030;
     }
     
     nav {
       display: flex;
       justify-content: center;
       background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: var(--box-shadow);
       position: sticky;
       top: 0;
       z-index: 100;
     }
     
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 2rem;
+    }
+    
     nav a {
-      padding: 1rem 2rem;
+      padding: 1.25rem 1.5rem;
       text-decoration: none;
       color: var(--dark-color);
-      font-weight: 500;
-      transition: all 0.3s ease;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background-color: var(--secondary-color);
+      transition: var(--transition);
     }
     
     nav a:hover {
       color: var(--secondary-color);
-      background-color: var(--light-color);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
     
     main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
+      padding: 2rem 0;
     }
     
     section {
       margin-bottom: 3rem;
-      padding: 2rem;
+      padding: 2.5rem;
       background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
     }
     
     h2 {
       color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
       border-bottom: 2px solid var(--light-color);
       font-size: 1.8rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+    
+    h3 {
+      color: var(--primary-color);
+      margin: 2rem 0 1rem;
+      font-size: 1.4rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
     }
     
     p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-color);
+      line-height: 1.7;
     }
     
-    .team-grid {
+    .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
     
-    .member {
-      padding: 1.5rem;
+    .feature-card {
+      padding: 1.75rem;
       background-color: var(--light-color);
-      border-radius: 6px;
-      transition: transform 0.3s ease;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .feature-card h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+    
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .member {
+      padding: 1.75rem;
+      background-color: white;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      border-top: 4px solid var(--secondary-color);
     }
     
     .member:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 4px solid var(--light-color);
+      box-shadow: var(--box-shadow);
     }
     
     .member strong {
       display: block;
       color: var(--primary-color);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .member span {
+      display: block;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
     
     .member em {
       color: var(--secondary-color);
       font-style: normal;
+      font-size: 0.9rem;
+      word-break: break-all;
     }
     
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
-    
-    ul {
-      list-style-position: inside;
-      margin-left: 1rem;
-    }
-    
-    li {
-      margin-bottom: 0.5rem;
-    }
-    
-    a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--dark-color);
-      color: white;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
       margin-top: 2rem;
     }
     
+    .gallery-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 1rem;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    
+    .resource-list {
+      list-style: none;
+    }
+    
+    .resource-list li {
+      margin-bottom: 1rem;
+      padding: 1.25rem;
+      background-color: var(--light-color);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .resource-list li:hover {
+      background-color: #edf2f7;
+      transform: translateX(5px);
+    }
+    
+    .resource-list a {
+      display: flex;
+      align-items: center;
+      color: var(--primary-color);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .resource-list a::before {
+      content: '↓';
+      display: inline-block;
+      margin-right: 0.75rem;
+      color: var(--secondary-color);
+      font-weight: bold;
+    }
+    
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 3rem 0 2rem;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+    
+    .footer-column p, .footer-column a {
+      color: #cbd5e0;
+      margin-bottom: 0.75rem;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .footer-column a:hover {
+      color: white;
+      text-decoration: none;
+      transform: translateX(5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #2d3748;
+      color: #a0aec0;
+      font-size: 0.9rem;
+    }
+    
     @media (max-width: 768px) {
-      nav {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      nav .container {
         flex-direction: column;
         align-items: center;
+        padding: 0;
       }
       
       nav a {
-        padding: 0.8rem 1rem;
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
       }
       
-      .team-grid {
+      section {
+        padding: 1.5rem;
+      }
+      
+      .features-grid, .team-grid, .gallery {
         grid-template-columns: 1fr;
       }
     }
@@ -181,94 +449,196 @@
 </head>
 <body>
   <header>
-    <h1>Biomechanical Analysis for Performance Enhancement</h1>
-    <p>Optimizing Athletic Performance Through Advanced Motion Science</p>
+    <div class="container">
+      <h1>BiomeTrack: Biomechanical Analyse For Weightlifting Performance Enhacement </h1>
+      <p>Revolutionizing athletic training through precision biomechanical analysis and AI-driven insights</p>
+      
+    </div>
   </header>
 
   <nav>
-    <a href="#project">Project</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#downloads">Resources</a>
-    <a href="#about">Team</a>
+    <div class="container">
+      <a href="#project">Project Overview</a>
+      <a href="#technology">Technology</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#downloads">Resources</a>
+      <a href="#team">Research Team</a>
+    </div>
   </nav>
 
-  <main>
+  <main class="container">
     <section id="project">
       <h2>Project Overview</h2>
-      <p>Our innovative system revolutionizes athletic training by integrating cutting-edge technologies to provide comprehensive performance analysis and enhancement tools for weightlifting athletes.</p>
+      <p>BiomeTrack represents a paradigm shift in athletic performance optimization, combining cutting-edge biomechanical analysis with artificial intelligence to deliver unprecedented insights for weightlifting athletes and coaches.</p>
       
-      <h3>Key Features</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h4>Real-time Form Analysis</h4>
+          <p>AI-powered assessment of lifting technique with immediate corrective feedback to optimize performance and reduce injury risk.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h4>3D Models</h4>
+          <p>Using 3D models give correct techniques for weightlifters.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h4>Fatigue Monitoring</h4>
+          <p>Proprietary ML model detect subtle signs of muscular fatigue, enabling optimal training load management.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h4>Injury Prevention</h4>
+          <p>Predictive analytics identify potential injury risks before they manifest, allowing proactive intervention.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h4>Nutrition Optimization</h4>
+          <p>Personalized meal planning synchronized with training cycles for maximum performance and recovery.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h4>Rehabilitation Tracking</h4>
+          <p>Objective progress metrics for injured athletes returning to peak performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="technology">
+      <h2>Technical Architecture</h2>
+      <p>Our system integrates multiple advanced technologies into a cohesive platform:</p>
+      
+      <h3>Core Components</h3>
       <ul>
-        <li><strong>AI-Powered Biomechanical Feedback:</strong> Real-time analysis of lifting form and technique</li>
-        <li><strong>3D Posture Correction:</strong> Visual feedback for optimal body positioning</li>
-        <li><strong>Fatigue Detection:</strong> Intelligent monitoring of athlete fatigue levels</li>
-        <li><strong>Injury Prediction:</strong> Advanced algorithms to identify potential injury risks</li>
-        <li><strong>Personalized Meal Planning:</strong> Nutrition optimization based on training load</li>
-        <li><strong>Rehabilitation Tracking:</strong> Progress monitoring for injury recovery</li>
+        <li><strong>Computer Vision Framework:</strong> Custom deep learning models for real-time pose estimation</li>
+        <li><strong>Biomechanical Engine:</strong> Physics-based simulation of human movement dynamics</li>
+        <li><strong>Cloud Processing:</strong> Distributed computing for complex analysis tasks</li>
+        <li><strong>Mobile Interface:</strong> Cross-platform application for coaches and athletes</li>
+        <li><strong>Data Analytics:</strong> Longitudinal performance tracking and trend analysis</li>
       </ul>
       
-      <p>All these features are seamlessly integrated into a mobile-friendly platform, allowing athletes and coaches to access critical performance data anytime, anywhere.</p>
+      <h3 style="margin-top: 2rem;">Methodology</h3>
+      <p>Our research methodology combines quantitative biomechanical analysis with qualitative coaching insights, validated through controlled trials with competitive athletes. The system has demonstrated statistically significant improvements in lifting efficiency and reduced injury incidence in preliminary testing.</p>
     </section>
 
     <section id="gallery">
-      <h2>Gallery</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-        <img src="assets/sprint-athlete.jpg" alt="Athlete sprinting" style="width: 100%; max-width: 500px;"/>
-        <img src="assets/weightlifting.jpg" alt="Weightlifting analysis" style="width: 100%; max-width: 500px;"/>
+      <h2>System Gallery</h2>
+      <p>Visual documentation of our platform interface and analysis outputs:</p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/39bbb8fb-6c0d-4828-a55c-402d32cd35d1.png" alt="Olympic Snatch Tutorial Screen">
+          <div class="gallery-caption">Technique Tutorial Interface</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="assets/a2dcdb53-38fa-4915-8e4e-ff7717bdb4b3.png" alt="Weightlifting Techniques Menu">
+          <div class="gallery-caption">Exercise Library</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="assets/2f634f96-ef04-4b44-b5cd-b7541c4f0635.jpg" alt="Personalized Meal Plan">
+          <div class="gallery-caption">Nutrition Planning Module</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.17 PM.jpeg" alt="Power App Home">
+          <div class="gallery-caption">Dashboard Overview</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="assets/WhatsApp Image 2025-05-25 at 10.08.32 PM.jpeg" alt="Fitness Planner Screen">
+          <div class="gallery-caption">Training Planner</div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="assets/3a98e042-3b09-435c-a1a4-ca8956b24707.png" alt="System Architecture Diagram">
+          <div class="gallery-caption">Technical Architecture</div>
+        </div>
       </div>
-      <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">Biomechanical motion capture and analysis outputs</p>
     </section>
 
     <section id="downloads">
-      <h2>Resources & Downloads</h2>
-      <p>Access our research materials and project documentation:</p>
-      <ul>
-        <li><a href="downloads/Biomechanical_Analysis_For_Weightlifting_Performance_Enhancement.pdf" download>Research Paper</a> - Comprehensive academic paper detailing our methodology and findings</li>
-        <li><a href="downloads/Final_Report_24-25J-275.pdf" download>Final Report</a> - Complete project documentation</li>
-        <li><a href="downloads/Project_Proposal_Presentation.pptx" download>Project Proposal Presentation</a> - Initial project pitch and scope</li>
-        <li><a href="downloads/TAF_24-25J-275.pdf" download>TAF Document</a> - Technical Approval Form</li>
-        <li><a href="downloads/RETAF_24-25J-275.pdf" download>RETAF Document</a> - Revised Technical Approval Form</li>
+      <h2>Research Resources</h2>
+      <p>Access our complete research documentation and technical materials:</p>
+      
+      <ul class="resource-list">
+        <li>
+          <a href="downloads/Biomechanical Analyse For Weightlifting Performance Enhacement.pdf" download>
+            Comprehensive Research Paper
+          </a>
+        </li>
+        <li>
+          <a href="downloads/Final Report - 24-25J-275.pdf" download>
+            Final Project Report 
+          </a>
+        </li>
+        <li>
+          <a href="downloads/Progress Presentation 1.pptx" download>
+            Proposal Presentation Deck 
+          </a>
+        </li>
+        <li>
+          <a href="downloads/TAF_24-25J-275.pdf" download>
+            Technical Approval Documentation 
+          </a>
+        </li>
+        <li>
+          <a href="downloads/System_Architecture_Specifications.pdf" download>
+            Technical Specifications
+          </a>
+        </li>
       </ul>
     </section>
 
-    <section id="about">
+    <section id="team">
       <h2>Research Team</h2>
-      <p>We are a dedicated group of final-year undergraduates from the Sri Lanka Institute of Information Technology (SLIIT), conducting groundbreaking research in biomechanical analysis for athletic performance enhancement.</p>
+      <p>This project was conducted by final-year undergraduates from the Sri Lanka Institute of Information Technology (SLIIT), under the guidance of faculty advisors from the Departments of Information Technology and Software Engineering.</p>
       
-      <h3 style="margin-top: 2rem; color: var(--primary-color);">Project Members</h3>
+      <h3>Project Members</h3>
       <div class="team-grid">
         <div class="member">
+          <img src="assets/team-member1.jpeg" alt="K.S.S Gunawardena">
           <strong>K.S.S Gunawardena</strong>
-          <span>Faculty of Computing, IT Department</span>
+          <span>BSc (Hons) in Information Technology</span>
           <em>it21250088@my.sliit.lk</em>
         </div>
+        
         <div class="member">
+          <img src="assets/team-member2.jpg" alt="I.U Ranaweera">
           <strong>I.U Ranaweera</strong>
-          <span>Faculty of Computing, IT Department</span>
+          <span>BSc (Hons) in Information Technology</span>
           <em>it21313134@my.sliit.lk</em>
         </div>
+        
         <div class="member">
+          <img src="assets/team-member3.jpg" alt="S.D.A.N Wimalarathna">
           <strong>S.D.A.N Wimalarathna</strong>
-          <span>Faculty of Computing, IT Department</span>
+          <span>BSc (Hons) in Information Technology</span>
           <em>it21312212@my.sliit.lk</em>
         </div>
+        
         <div class="member">
+          <img src="assets/team-member4.jpg" alt="B.M Ranatunga">
           <strong>B.M Ranatunga</strong>
-          <span>Faculty of Computing, IT Department</span>
+          <span>BSc (Hons) in Information Technology</span>
           <em>it21313134@my.sliit.lk</em>
         </div>
       </div>
       
-      <h3 style="margin-top: 2rem; color: var(--primary-color);">Supervisors</h3>
+      <h3>Faculty Advisors</h3>
       <div class="team-grid">
         <div class="member">
-          <strong>G.T Dassanayake</strong>
-          <span>Faculty of Computing, IT Department</span>
+          <img src="assets/supervisor1.jpeg" alt="G.T Dassanayake">
+          <strong>Ms. G.T Dassanayake</strong>
+          <span>Senior Lecturer, IT Department</span>
           <em>thamali.d@sliit.lk</em>
         </div>
+        
         <div class="member">
-          <strong>P. Gunathilake</strong>
-          <span>Faculty of Computing, Software Engineering Department</span>
+          <img src="assets/supervisor2.jpeg" alt="P. Gunathilake">
+          <strong>Ms. P. Gunathilake</strong>
+          <span>Lecturer, Software Engineering Department</span>
           <em>poojani.g@sliit.lk</em>
         </div>
       </div>
@@ -276,8 +646,34 @@
   </main>
 
   <footer>
-    <p>© 2025 Biomechanical Analysis Research Team | Sri Lanka Institute of Information Technology</p>
-    <p style="margin-top: 0.5rem;">Contact: <a href="mailto:info@biomech-analysis.com" style="color: white;">info@biomech-analysis.com</a></p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About BiomeTrack</h3>
+          <p>An advanced biomechanical analysis platform developed at SLIIT to revolutionize athletic training through data science and AI.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#project">Project Details</a>
+          <a href="#technology">Technology</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#downloads">Resources</a>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <a href="mailto:research@biotrack.sliit.lk">research@biotrack.sliit.lk</a>
+          <a href="tel:+94112345678">+94 112 345 678</a>
+          <p>Sri Lanka Institute of Information Technology</p>
+          <p>New Kandy Road, Malabe 10115</p>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2025 BiomeTrack Research Project | Sri Lanka Institute of Information Technology. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
